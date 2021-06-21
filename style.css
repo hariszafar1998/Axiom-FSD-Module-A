@@ -1,3 +1,6 @@
 .main-index{
     align-content: center;
+    justify-content: center;
+    border: 2px;
+    border-color: black;
 }
