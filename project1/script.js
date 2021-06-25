@@ -21,9 +21,13 @@ function showSuccess(input) {
 }
 
 // Function to check if email is valid
-function isValidEmail(email) {
+function checkEmail(input) {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
+    if (re.test(input.value.trim())) {
+        showSuccess(input);
+    }   else {
+        showError(input, `Invalid email address`);
+    }
 }
 
 // function to check if the fields are filled or not
@@ -42,9 +46,9 @@ function checkRequired(inputArray) {
 
 function checkLength(input, min, max) {
     if (input.value.length < min) {
-        showError(input,`${input.id} shoud be greater than ${min} characters`);
+        showError(input,`${getFieldId(input)} shoud be greater than ${min} characters`);
     } else if (input.value.length > max) {
-        showError(input,`${input.id} shoud be less than ${max} characters`);
+        showError(input, `${getFieldId(input)} shoud be less than ${max} characters`);
     } else {
         showSuccess(input);
     }
@@ -52,12 +56,17 @@ function checkLength(input, min, max) {
 
 // function to check if the passwords match
 
-function checkPasswordsMatch(input1, input2) {
-    if ( input1.value !== input2.value ) {
-        showError(input2, 'Passwords do not match');
+function checkPasswordsMatch(inputA, inputB) {
+    if ( inputA.value !== inputB.value ) {
+        showError(inputB,"Passwords don't match")
     }
 }
 
+// proper text case
+
+function getFieldId(input) {
+    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
 
 // Event listner for button
 
