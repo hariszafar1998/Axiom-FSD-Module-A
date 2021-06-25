@@ -26,17 +26,38 @@ function isValidEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
-// function to check if the fields have filled or not
+// function to check if the fields are filled or not
 
 function checkRequired(inputArray) {
     inputArray.forEach(function(input){
-        if (input.value === '') {
-            showError(input,`${getFieldId(input)} is required`);
+        if ( input.value === '' ) {
+            showError(input, `${input.id} is required`)
         } else {
             showSuccess(input);
         }
     })
 }
+
+// function to check the input length
+
+function checkLength(input, min, max) {
+    if (input.value.length < min) {
+        showError(input,`${input.id} shoud be greater than ${min} characters`);
+    } else if (input.value.length > max) {
+        showError(input,`${input.id} shoud be less than ${max} characters`);
+    } else {
+        showSuccess(input);
+    }
+}
+
+// function to check if the passwords match
+
+function checkPasswordsMatch(input1, input2) {
+    if ( input1.value !== input2.value ) {
+        showError(input2, 'Passwords do not match');
+    }
+}
+
 
 // Event listner for button
 
@@ -47,6 +68,6 @@ form.addEventListener('submit', function(e) {
     checkLength(username,3,10);
     checkLength(password,6,30);
     checkEmail(email);
-    confirmPassword(password,password2);
+    checkPasswordsMatch(password,password2);
 
 })
