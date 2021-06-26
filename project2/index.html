@@ -8,8 +8,7 @@
     <title>Seat Selector</title>
 </head>
 <body>
-    <div class="mainContainer">
-        <div class="selectContainer">
+        <div class="select-container">
             <label for="movieSelection">Select the Movie</label>
             <select name="movie" id="movie">
                 <option value="10">Spiderman</option>
@@ -20,28 +19,25 @@
             </select>
         </div>
         <!-- legend -->
-        <div class="legend">
-            <ul>
+            <ul class="legend">
                 <li>
                     <div class="seat"></div>
                     <small>Available</small>
                 </li>
 
                 <li>
-                    <div class="seats selected"></div>
+                    <div class="seat selected"></div>
                     <small>Selected</small>
                 </li>
 
                 <li>
-                    <div class="seats occupied"></div>
+                    <div class="seat occupied"></div>
                     <small>Occupied</small>
                 </li>
             </ul>
-        </div>
         
-        <div class="screen"></div>
-
-        <div class="seatContainer">
+        <div class="container">
+            <div class="screen"></div>
             <!--row 1-->
                 <div class="row">
                     <div class="seat"></div>
@@ -60,15 +56,15 @@
                 <div class="seat"></div>
                 <div class="seat"></div>
                 <div class="seat"></div>
-                <div class="seat"></div>
+                <div class="seat occupied"></div>
                 <div class="seat"></div>
                 <div class="seat"></div>
             </div>
             <!--row 3-->
             <div class="row">
+                <div class="seat occupied"></div>
                 <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
+                <div class="seat occupied"></div>
                 <div class="seat"></div>
                 <div class="seat"></div>
                 <div class="seat"></div>
@@ -109,6 +105,7 @@
                 <div class="seat"></div>
             </div>
         </div>
-    </div>
+        <p class="totals">You selected <span>0</span> seats, and total price is $<span>0</span>.</p>
+
 </body>
 </html>
