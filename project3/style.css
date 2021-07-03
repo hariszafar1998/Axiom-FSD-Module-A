@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: seagreen;
+}
+
+.time {
+    color: white;
+    margin-top: 12px;
+}
+
+.video {
+    border: 3px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+.controls {
+    display: flex;
+}
+
+.btn {
+    margin: 10px;
+    background-color: seagreen;
+    outline: 0;
+    border: none;
+    color: white;
+}
+
+.btn:hover {
+    color: lightgray;
+    cursor: pointer;
+}
+
+.progress {
+    margin: 10px;
+}
