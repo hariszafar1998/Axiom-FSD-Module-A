@@ -1,6 +1,8 @@
 const currencyOne = document.getElementById('currencyOne');
+const currencyTwo = document.getElementById('currencyTwo');
 
-const rate = fetch(`https://v6.exchangerate-api.com/v6/2c776b4e99e3b430fdf66795/pair/${currencyOne}`)
+
+const rate = fetch(`https://v6.exchangerate-api.com/v6/2c776b4e99e3b430fdf66795/pair/${currencyOne}/${currencyTwo}`)
 .then(res => res.json())
 .then(data => {
     console.log(data.conversion_rate);
