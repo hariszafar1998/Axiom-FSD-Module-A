@@ -1,59 +1,37 @@
 const currencyOne = document.getElementById('currencyOneSelect');
 const currencyTwo = document.getElementById('currencyTwoSelect');
-const currencyOneAmount = document.getElementById('amountOne');
-const currencyTwoAmount = document.getElementById('amountTwo');
-const rateUpdate = document.getElementById('rate');
+const amountOne = document.getElementById('amountOne');
+const amountTwo = document.getElementById('amountTwo');
 const swap = document.getElementById('swap');
+const rate = document.getElementById('rate');
 
 // Functions
 
 function calculate() {
-    const currencyOneCode = currencyOne.value;
-    const currencyTwoCode = currencyTwo.value;
-
-    // fetch data from API
+    currencyOneCode = currencyOne.value;
+    currencyTwoCode = currencyTwo.value;
 
     fetch(`https://v6.exchangerate-api.com/v6/2c776b4e99e3b430fdf66795/latest/${currencyOneCode}`)
     .then((response) => response.json())
     .then((data) => {
-        const conversionRateOne = data.conversion_rates[currencyTwoCode];
-        rateUpdate.innerText = `1 ${currencyOneCode} = ${conversionRateOne} ${currencyTwoCode}`;
-        currencyTwoAmount.value = currencyOneAmount.value * conversionRateOne;
-    })
-};
-
-// Functions
-
-function calculateAgain() {
-    const currencyOneCode = currencyOne.value;
-    const currencyTwoCode = currencyTwo.value;
-
-    // fetch data from API
-
-    fetch(`https://v6.exchangerate-api.com/v6/2c776b4e99e3b430fdf66795/latest/${currencyTwoCode}`)
-    .then((response) => response.json())
-    .then((data) => {
-        const conversionRateTwo = data.conversion_rates[currencyOneCode];
-        currencyOneAmount.value = currencyTwoAmount.value * conversionRateTwo;
+        const conversionRate = data.conversion_rates[currencyTwoCode];
+        rate.innerText = `1 ${currencyOneCode} = ${conversionRate} ${currencyTwoCode}`;
+        amountTwo.value = amountOne.value * conversionRate;
     })
 };
 
 function swapCurrencies() {
-    const saveCurrenyOneValue = currencyOne.value;
-    currencyOne.value = currencyTwo.value;
-    currencyTwo.value = saveCurrenyOneValue;
+    const saveCurrencyTwoValue = currencyTwo.value;
+    currencyTwo.value = currencyOne.value;
+    currencyOne.value = saveCurrencyTwoValue;
 
-    const saveOneRate = currencyOneAmount.value;
-    currencyOneAmount.value = currencyTwoAmount.value;
-    currencyTwoAmount.value = saveOneRate;
+    const saveCurrencyTwoAmount = amountTwo.value;
+    amountTwo.value = amountOne.value;
+    amountOne.value = saveCurrencyTwoAmount;
 };
 
-// Event Listeners
-
+// Event listners
 currencyOne.addEventListener('change', calculate);
-currencyTwo.addEventListener('change',calculate);
-currencyOneAmount.addEventListener('input',calculate);
-currencyTwoAmount.addEventListener('input',calculateAgain);
+currencyTwo.addEventListener('change', calculate);
+amountOne.addEventListener('input', calculate);
 swap.addEventListener('click', swapCurrencies);
-
-calculate();
