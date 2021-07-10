@@ -5,6 +5,8 @@ const amountTwo = document.getElementById('amountTwo');
 const swap = document.getElementById('swap');
 const rate = document.getElementById('rate');
 
+
+
 // Functions
 
 function calculate() {
@@ -31,7 +33,7 @@ function swapCurrencies() {
 };
 
 // Event listners
-currencyOne.addEventListener('change', calculate);
-currencyTwo.addEventListener('change', calculate);
-amountOne.addEventListener('input', calculate);
-swap.addEventListener('click', swapCurrencies);
+// currencyOne.addEventListener('change', calculate);
+// currencyTwo.addEventListener('change', calculate);
+// amountOne.addEventListener('input', calculate);
+// swap.addEventListener('click', swapCurrencies);
