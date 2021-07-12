@@ -62,6 +62,18 @@ h3 {
     margin: 20px 0 0;
 }
 
+.totalDiv {
+    background-color: white;
+    padding: 10px;
+    font-weight: bold;
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
 .user {
     display: flex;
     justify-content: space-between;
