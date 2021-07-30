@@ -30,6 +30,7 @@ nav {
     color: white;
     z-index: 100;
     transform: translateX(-100%);
+    border-right: 1px solid white;
 }
 
 nav .logo {
@@ -134,6 +135,7 @@ main {
     padding: 30px;
     animation-name: modalAnimation;
     animation-duration: 5s;
+    /* transform: translateY(0px); */
     /* text-align: center; */
     /* cursor: pointer; */
 }

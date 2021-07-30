@@ -16,6 +16,6 @@ navButton.addEventListener('click', () => {
     nav.classList.toggle('show-nav');
 });
 
-modalContainer.addEventListener('click', () => {
-    modalContainer.classList.remove('showModal');
+window.addEventListener('click', e => {
+    e.target === modalContainer ? modalContainer.classList.remove('showModal') : false;
 });
