@@ -8,18 +8,19 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: lightgray;
     margin: 0;
-    transition: transform 0.5s ease;
+    /* transition: transform 0.5s ease; */
 }
 
-body.show-nav {
-    transform: translate(200px);
+nav.show-nav {
+    transform: translate(0px);
 }
 
-body.closeNav {
-    /* transform: translate(-200px); */
+nav.closeNav {
+    transform: translate(-200px);
 }
 
 nav {
+    transition: transform 0.5s ease;
     position: fixed;
     top: 0;
     left: 0;

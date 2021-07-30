@@ -13,7 +13,7 @@ closeButton.addEventListener('click', () => {
 });
 
 navButton.addEventListener('click', () => {
-    document.body.classList.toggle('show-nav');
+    nav.classList.toggle('show-nav');
 });
 
 modalContainer.addEventListener('click', () => {
