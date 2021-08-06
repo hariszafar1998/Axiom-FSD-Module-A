@@ -8,17 +8,33 @@
     <title>Hangman Game</title>
 </head>
 <body>
-    <h1>Hangman Game</h1>
-    <p>User keyboard to enter the letters..</p>
+    <h1 class="title">Hangman Game</h1>
+    <p class="instructions">User keyboard to enter the letters..</p>
 
     <div class="container">
         <!-- Hangman -->
         <svg class="hangman-container" height="250" width="200">
-            <line x1="60" y1="250" x2="140" y2="250"/>
-            <line x1="100" y1="250" x2="100" y2="10"/>
-            <line x1="100" y1="10" x2="300" y2="10"/>
-            <line x1="300" y1="10" x2="300" y2="100"/>
-        </svg>  
+            <line x1="60" y1="20" x2="140" y2="20" />
+            <line x1="140" y1="20" x2="140" y2="50" />
+            <line x1="60" y1="20" x2="60" y2="230" />
+            <line x1="20" y1="230" x2="100" y2="230" />
+            <circle cx="140" cy="70" r="20" />
+            <line x1="140" y1="90" x2="140" y2="150" class="hangman-part" />
+            <line x1="140" y1="90" x2="110" y2="150" class="hangman-part" />
+            <line x1="140" y1="90" x2="170" y2="150" class="hangman-part" />
+            <line x1="140" y1="150" x2="110" y2="190" class="hangman-part" />
+            <line x1="140" y1="150" x2="170" y2="190" class="hangman-part" />
+        </svg>
+        <div class="incorrectLetters" id="incorrectLetters">
+            <p>Incorrect Letters</p>
+        </div>
+        <div class="correctLetters" id="clcorrectLette">
+            <div class="letter">h</div>
+            <div class="letter">a</div>
+            <div class="letter">r</div>
+            <div class="letter">i</div>
+            <div class="letter">s</div>
+        </div>
     </div>
 
     <script src="script.js"></script>

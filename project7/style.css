@@ -10,12 +10,27 @@ body {
     color: white;
 }
 
+.title {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.instructions {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
 .container {
     padding: 20px;
     position: relative;
     margin: auto;
     height: 350px;
     width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
 }
 
 .hangman-container {
@@ -23,4 +38,29 @@ body {
     stroke: white;
     stroke-width: 5px;
     stroke-linecap: round;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.incorrectLetters {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-top: 10px;
+    font-size: 125%;
+}
+
+.correctLetters {
+    display: flex;
+    margin-top: 30px;
+}
+
+.letter {
+    font-size: 200%;
+    margin-left: 10px;
+    border-bottom: 5px solid white;
+    height: 50px;
+    width: 50px;
+    text-align: center;
 }
