@@ -64,3 +64,75 @@ body {
     width: 50px;
     text-align: center;
 }
+
+.notification {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 290px;
+    padding: 15px;
+    text-align: center;
+    border-radius: 4px;
+    position: absolute;
+    display: none;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    animation-name: notificationopen;
+    animation-duration: 1s;
+}
+
+.notification p {
+    margin: 0;
+}
+
+.modalcontainer {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.modal {
+    background-color: white;
+    width: 350px;
+    padding: 15px;
+    color: navy;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal button {
+    padding: 10px;
+    width: 150px;
+    background-color: navy;
+    color: white;
+    outline: 0;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.modal button:active {
+    transform: scale(0.9);
+}
+
+.hangman-part {
+    display: none;
+}
+
+@keyframes notificationopen {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
