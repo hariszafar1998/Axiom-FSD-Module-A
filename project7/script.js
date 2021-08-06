@@ -16,9 +16,12 @@ const words = [
 let incorrectLetters = [];
 
 // Array of Correct Letters
-let correctLetters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+// let correctLetters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+let correctLetters = [];
 
 let randomWord = words[Math.floor(Math.random()*words.length)];
+let randomWordArray = randomWord.split('');
+console.log(randomWordArray);
 
 function renderWord() {
     correctLettersElement.innerHTML = `
@@ -29,5 +32,24 @@ function renderWord() {
         ` ).join('')}
     `
 };
+
+function displayIncorrectLettersSection() {
+    incorrectLettersElement.innerHTML = `<p>Incorrect Letters</p>${incorrectLetters}`;
+    
+};
+
+window.addEventListener('keydown', e => {
+    if ( e.keyCode >= 65 && e.keyCode <= 90 ) {
+        const pressedletter = e.key;
+        // console.log(pressedletter);
+        if ( randomWordArray.includes(pressedletter) ) {
+            correctLetters.push(pressedletter);
+            renderWord();
+        } else if ( !randomWordArray.includes(pressedletter) ) {
+            incorrectLetters.push(pressedletter);
+            displayIncorrectLettersSection();
+        }
+    }
+});
 
 renderWord();
