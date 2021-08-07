@@ -6,6 +6,8 @@ const incorrectLettersElement = document.getElementById('incorrectLetters');
 const correctLettersElement = document.getElementById('correctLetters');
 const notification = document.getElementById('notification');
 const modal = document.getElementById('modalcontainer');
+const modalMessage = document.getElementById('modal-Message');
+const playAgainBtn = document.getElementById('playBtn');
 
 // Array of 1000 words
 const words = [
@@ -31,11 +33,28 @@ function renderWord() {
             </div>
         ` ).join('')}
     `
+    const word = correctLettersElement.innerText.replace(/\n/g, '');
+    if (word == randomWord) {
+        modal.style.display = "flex";
+        modalMessage.innerText = "Congrats, You Won!";
+    }
 };
 
 function displayIncorrectLettersSection() {
     incorrectLettersElement.innerHTML = `<p>Incorrect Letters</p>${incorrectLetters}`;
-    
+    const hangmanPartsCount = hangmanParts.length;
+    hangmanParts.forEach( (part, index) => {
+        const numIncorrect = incorrectLetters.length;
+        if (index < numIncorrect) {
+            part.style.display = "block";
+            if (incorrectLetters.length === 6) {
+                modal.style.display = "flex";
+                modalMessage.innerText = "Aww, You Lost!";
+            }
+        } else {
+            part.style.display = "none";
+        }
+    } );
 };
 
 window.addEventListener('keydown', e => {
@@ -43,13 +62,40 @@ window.addEventListener('keydown', e => {
         const pressedletter = e.key;
         // console.log(pressedletter);
         if ( randomWordArray.includes(pressedletter) ) {
-            correctLetters.push(pressedletter);
-            renderWord();
+            if (!correctLetters.includes(pressedletter)) {
+                correctLetters.push(pressedletter)
+                renderWord();
+            } else {
+                notification.style.display = "flex";
+                setTimeout( () => {
+                    notification.style.display = "none";
+                }, 1000 );
+            }
         } else if ( !randomWordArray.includes(pressedletter) ) {
-            incorrectLetters.push(pressedletter);
-            displayIncorrectLettersSection();
+            if (!incorrectLetters.includes(pressedletter)) {
+                incorrectLetters.push(pressedletter)
+                displayIncorrectLettersSection();
+            } else {
+                notification.style.display = "flex";
+                setTimeout(()=>{
+                    notification.style.display = "none";
+                }, 1000)
+            }
         }
     }
 });
+
+function resetGame() {
+    correctLetters = [];
+    incorrectLetters = [];
+    displayIncorrectLettersSection();
+    randomWord = words[Math.floor(Math.random()*words.length)];
+    randomWordArray = randomWord.split('');
+    renderWord();
+    console.log(randomWord);
+    modal.style.display = "none";
+};
+
+playAgainBtn.addEventListener('click', resetGame);
 
 renderWord();
