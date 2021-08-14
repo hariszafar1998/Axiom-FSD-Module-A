@@ -91,3 +91,20 @@ button {
 .meals-element {
     display: flex;
 }
+
+.selectedmeal img {
+    height: 250px;
+    width: 250px;
+    border: 2px white solid;
+    border-radius: 5px;
+}
+
+.instructions {
+    text-align: left;
+    margin-left: 50px;
+}
+
+.newDivForIng {
+    text-align: left;
+    margin-left: 50px;
+}
