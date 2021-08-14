@@ -107,4 +107,6 @@ button {
 .newDivForIng {
     text-align: left;
     margin-left: 50px;
+    border-top: 2px dotted white;
+    border-bottom: 2px dotted white;
 }
