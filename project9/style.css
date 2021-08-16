@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: lightgray;
+}
+
+.container {
+    width: 350px;
+}
+
+.balance {
+    font-size: 200%;
+}
+
+.creditdebitsection {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30px;
+    margin-right: 30px;
+    background-color: white;
+    border: 2px dotted black;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.credit-section {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px dotted black;
+    padding-right: 50px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+.debit-section {
+    padding-right: 30px;
+}
+
+.credit {
+    color: darkgreen;
+}
+
+.debit {
+    color: darkred;
+}
+
+.history h3 {
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+}
+
+.form-section h3 {
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+}
+
+.historylist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.list-item-credit {
+    background-color: white;
+    border-right: 5px solid darkgreen;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.deletebtn {
+    position: absolute;
+    top: 15%;
+    right: 100%;
+    background-color: darkred;
+    color: white;
+    border: 0;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.deletebtn:hover {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.list-item-debit {
+    background-color: white;
+    border-right: 5px solid darkred;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.form-control input {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    font-size: 15px;
+    outline: 0;
+}
+
+.form-section button {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    margin-top: 5px;
+    background-color: rgb(14, 73, 97);
+    color: white;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.form-section button:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    transition: 0.5s ease-in-out;
+}
