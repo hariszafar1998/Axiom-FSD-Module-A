@@ -13,4 +13,13 @@ const transactions = [
     { id: 1, reason: 'Party', amount: -90 }
 ];
 
-console.log(transactions);
+let transactionArray = transactions;
+
+function init() {
+    const transactionAmounts = transactions.map( transaction => transaction.amount )
+    console.log(transactionAmounts);
+    historyList.innerHTML = transactionArray.map ( transaction => `<li class="list-item-credit"><span id="reason">${transaction.reason}</span> <span id="amount-debit">$${transaction.amount}</span> <button class="deletebtn" id="deletebtn">X</button></li>` ).join('');
+    totalBalance.innerText = `$${transactionAmounts.reduce( (acc, amount) => (acc += amount), 0)}`;
+};
+
+init();
