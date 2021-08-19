@@ -18,8 +18,17 @@ let transactionArray = transactions;
 function init() {
     const transactionAmounts = transactions.map( transaction => transaction.amount )
     console.log(transactionAmounts);
-    historyList.innerHTML = transactionArray.map ( transaction => `<li class="list-item-credit"><span id="reason">${transaction.reason}</span> <span id="amount-debit">$${transaction.amount}</span> <button class="deletebtn" id="deletebtn">X</button></li>` ).join('');
-    totalBalance.innerText = `$${transactionAmounts.reduce( (acc, amount) => (acc += amount), 0)}`;
-};
+    transactionArray.map ( transaction => {
+        const transactionType = transaction.amount.split('');
+        console.log(transactionType);
+        if ( transactionType.includes('+') ) {
+            console.log('yes', '0');
+            const newListItem = document.createElement('li');
+            newListItem.classList.add('list-item-credit');
+            newListItem.innerHTML = `<span id="reason">${transaction.reason}</span> <span id="amount-debit">$${transaction.amount}</span> <button class="deletebtn" id="deletebtn">X</button>`;
+            historyList.appendChild(newListItem)
+        }
+    });
+}
 
 init();
