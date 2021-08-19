@@ -6,29 +6,59 @@ const transactionForm = document.getElementById('transactionform');
 const amountAdd = document.getElementById('amount');
 const reasonAdd = document.getElementById('reason');
 
-const transactions = [
-    { id: 1, reason: 'Salary', amount: 1000 },
-    { id: 1, reason: 'Lunch', amount: -20 },
-    { id: 1, reason: 'Bonus', amount: 80 },
-    { id: 1, reason: 'Party', amount: -90 }
-];
+const transactions = [];
 
 let transactionArray = transactions;
 
 function init() {
     const transactionAmounts = transactions.map( transaction => transaction.amount )
-    console.log(transactionAmounts);
+    // console.log(transactionAmounts);
+    
+    totalBalance.innerText = `$${formatWealth(transactionAmounts.reduce( (acc, amount) => (acc += amount) , 0))}`;
+    creditBalance.innerText = `$${formatWealth(transactionAmounts.filter( amount => amount > 0 ).reduce( (acc, amount) => ( acc += amount ), 0 ))}`;
+    debitBalance.innerText = `$${formatWealth(transactionAmounts.filter( amount => amount < 0 ).reduce( (acc, amount) => ( acc += amount ), 0 ))}`;
+    
     transactionArray.map ( transaction => {
-        const transactionType = transaction.amount.split('');
-        console.log(transactionType);
-        if ( transactionType.includes('+') ) {
-            console.log('yes', '0');
+        const transactionType = JSON.stringify(transaction.amount).split('');
+        // console.log(transactionType);
+        if ( transactionType.includes('-') ) {
+            const newListItem = document.createElement('li');
+            newListItem.classList.add('list-item-debit');
+            newListItem.innerHTML = `<span id="reason">${transaction.reason}</span> <span id="amount-debit">$${formatWealth(transaction.amount)}</span> <button class="deletebtn" id="deletebtn">X</button>`;
+            historyList.appendChild(newListItem);
+        } else {
             const newListItem = document.createElement('li');
             newListItem.classList.add('list-item-credit');
-            newListItem.innerHTML = `<span id="reason">${transaction.reason}</span> <span id="amount-debit">$${transaction.amount}</span> <button class="deletebtn" id="deletebtn">X</button>`;
-            historyList.appendChild(newListItem)
+            newListItem.innerHTML = `<span id="reason">${transaction.reason}</span> <span id="amount-debit">$${formatWealth(transaction.amount)}</span> <button class="deletebtn" id="deletebtn">X</button>`;
+            historyList.appendChild(newListItem);
         }
     });
-}
+};
+
+function formatWealth(wealth) {
+    return wealth.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+};
+
+function formHandler(e) {
+    e.preventDefault();
+    transactionArray = [];
+    if ( amountAdd.value && reasonAdd.value ) {
+        const newObject = {
+            id: 1,
+            reason: reasonAdd.value,
+            amount: +amountAdd.value
+        }
+        // console.log(+amount.value);
+        transactionArray.push(newObject);
+    } else {
+        alert('Please enter the transaction amount or reason.');
+    }
+    init();
+    amountAdd.value = '';
+    reasonAdd.value = '';
+    console.log(transactionArray);
+};
+
+transactionForm.addEventListener('submit', formHandler)
 
 init();
