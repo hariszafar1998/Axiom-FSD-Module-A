@@ -11,7 +11,7 @@ const transactions = [];
 let transactionArray = transactions;
 
 function init() {
-    const transactionAmounts = transactions.map( transaction => transaction.amount )
+    const transactionAmounts = transactionArray.map( transaction => transaction.amount )
     // console.log(transactionAmounts);
     
     totalBalance.innerText = `$${formatWealth(transactionAmounts.reduce( (acc, amount) => (acc += amount) , 0))}`;
@@ -35,13 +35,13 @@ function init() {
     });
 };
 
-function formatWealth(wealth) {
-    return wealth.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+function formatWealth(amount) {
+    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 };
 
 function formHandler(e) {
     e.preventDefault();
-    transactionArray = [];
+    
     if ( amountAdd.value && reasonAdd.value ) {
         const newObject = {
             id: 1,
@@ -57,6 +57,7 @@ function formHandler(e) {
     amountAdd.value = '';
     reasonAdd.value = '';
     console.log(transactionArray);
+    
 };
 
 transactionForm.addEventListener('submit', formHandler)
