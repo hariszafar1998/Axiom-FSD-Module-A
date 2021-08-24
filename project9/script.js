@@ -151,4 +151,3 @@ if ( localStorage.getItem('transactionData') ) {
 
     init();
 }
-
