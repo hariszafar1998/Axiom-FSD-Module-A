@@ -46,6 +46,7 @@ img {
 .buttons {
     margin-left: 150px;
     margin-top: 20px;
+    z-index: 10;
 }
 
 .large {
@@ -58,6 +59,9 @@ img {
     color: white;
     font-size: 130%;
     margin-left: 20px;
+}
+
+.buttons button:hover {
     cursor: pointer;
 }
 
