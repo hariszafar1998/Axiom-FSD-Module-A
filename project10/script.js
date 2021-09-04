@@ -40,4 +40,6 @@ playBtn.addEventListener('click', () => {
     }
 });
 
+forwardBtn.addEventListener('click', nextTrack)
+
 loadTrack(tracksArray[trackIndex]);
